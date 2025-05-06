@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarap to the Last Bite - Discover Filipino Cuisine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    
+    /* Header Styles */
+ 
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      font-size: 2rem;
+    }
+    
+    .logo h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    
+    .logo span {
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.seriouseats.com/thmb/vwYhQ-3qKOpGrHbNcwkfjnoZUrM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Filipino-Features-Hero-Final-2-b785e627967843b0aa631c6a977adabe.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background-color: #d92323;
+      color: white;
+      border: 2px solid #d92323;
+    }
+    
+    .btn-primary:hover {
+      background-color: transparent;
+      color: white;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: #d92323;
+      border: 2px solid #d92323;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #d92323;
+      color: white;
+    }
+    
+    /* Section Styles */
+    .section {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #d92323;
+      margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      color: #666;
+    }
+    
+    /* Food Card Styles */
+    .food-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .food-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .food-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .food-card-img-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .food-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .food-card:hover .food-card-img {
+      transform: scale(1.1);
+    }
+    
+    .food-card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #d92323;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .food-card-content {
+      padding: 20px;
+    }
+    
+    .food-card-content h3 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    
+    .food-card-content p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+    
+    .food-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .food-card-rating {
+      color: #ffc107;
+    }
+    
+    .food-card-link {
+      color: #d92323;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .food-card-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer Styles */
+    .footer-bottom {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      color: rgba(41, 38, 38, 0.7);
+    }
+    
+    .footer-bottom a {
+      color: rgba(41, 38, 38, 0.7);
+      text-decoration: none;
+    }
+    
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #333;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .auth-tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #666;
+      border-bottom: 3px solid transparent;
+    }
+    
+    .auth-tab.active {
+      color: #d92323;
+      border-bottom: 3px solid #d92323;
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #d92323;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+    }
+    
+    .form-actions .btn {
+      width: 48%;
+      text-align: center;
+    }
+    
+    .forgot-password {
+      text-align: center;
+      margin-top: 15px;
+    }
+    
+    .forgot-password a {
+      color: #666;
+      text-decoration: none;
+    }
+    
+    .forgot-password a:hover {
+      text-decoration: underline;
+      color: #d92323;
+    }
+    
+    .social-login {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .social-login p {
+      position: relative;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    
+    .social-login p::before,
+    .social-login p::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background-color: #ddd;
+    }
+    
+    .social-login p::before {
+      left: 0;
+    }
+    
+    .social-login p::after {
+      right: 0;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+    }
+    
+    .facebook {
+      background-color: #3b5998;
+    }
+    
+    .google {
+      background-color: #db4437;
+    }
+    
+    .twitter {
+      background-color: #1da1f2;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+      
+      .section {
+        padding: 40px 0;
+      }
+      
+      .food-highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container no-nav">
+      <div class="logo">
+        <i class="fas fa-utensils"></i>
+        <h1>Sarap <span>to the Last Bite</span></h1>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover the Flavors of the Philippines</h1>
+      <p>From the savory adobo to the sweet halo-halo, explore the rich culinary heritage that makes Filipino food truly unique.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary" id="loginBtn">Login</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Filipino Food?</h2>
+      </div>  
+      <p class="section-subtitle">Filipino cuisine is a delightful fusion of flavors influenced by Malay, Spanish, Chinese, and American cultures, creating a unique taste experience you won't find anywhere else.</p>
+
+      <div class="food-highlights">
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="https://panlasangpinoy.com/wp-content/uploads/2019/10/easy-chicken-adobo.jpg" alt="Adobo" class="food-card-img">
+            <span class="food-card-badge">Signature Dish</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Chicken Adobo</h3>
+            <p>The Philippines' national dish features meat marinated in vinegar, soy sauce, garlic, and spices, then simmered to perfection.</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="https://asianinspirations.com.au/wp-content/uploads/2022/07/R02988-Pork-Sinigang-940x627.jpg" alt="Sinigang" class="food-card-img">
+            <span class="food-card-badge">Tart & Tangy</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Sinigang</h3>
+            <p>A sour soup made with tamarind as the base flavor, combined with various vegetables and your choice of meat or seafood.</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="https://www.seriouseats.com/thmb/qVvXvMMRUZHkcbfUl2imXDGFgYY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2012__05__20120522-207501-lechon-liempo-2-b5dc970333914a13add4ee48326aea13.jpg" alt="Lechon" class="food-card-img">
+            <span class="food-card-badge">Grand Celebration</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Lechon</h3>
+            <p>A whole roasted pig with crisp, golden-brown skin and tender, flavorful meat, often the centerpiece of Filipino celebrations.</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="food-highlights">
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="https://browngirlveganeats.com/wp-content/uploads/2023/10/photo1696939990-1.jpeg" alt="Kare-Kare" class="food-card-img">
+            <span class="food-card-badge">Hearty Classic</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Kare-Kare</h3>
+            <p>A rich oxtail stew with vegetables in a thick peanut sauce, traditionally served with bagoong (shrimp paste).</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="https://graceland.ph/wp-content/uploads/2023/05/HALO-HALO-SPECIAL.jpg" alt="Halo-Halo" class="food-card-img">
+            <span class="food-card-badge">Summer Favorite</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Halo-Halo</h3>
+            <p>A colorful dessert with shaved ice, evaporated milk, and various ingredients like sweet beans, fruits, and leche flan.</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-img-container">
+            <img src="http://globaltableadventure.com/wp-content/uploads/2012/09/philippines.food_.recipe.img_1152.jpg" alt="Lumpia" class="food-card-img">
+            <span class="food-card-badge">Crunchy Bites</span>
+          </div>
+          <div class="food-card-content">
+            <h3>Lumpia</h3>
+            <p>Filipino spring rolls with various fillings, either fresh (lumpiang sariwa) or fried (lumpiang prito).</p>
+            <div class="food-card-footer">
+              <div class="food-card-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="footer-bottom">
+    <p>&copy; 2025 Sarap to the Last Bite. All rights reserved. | <a href="privacy.html" style="color: rgba(41, 38, 38, 0.7);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(41, 40, 40, 0.7);">Terms of Service</a></p>
+  </div>
+
+  <!-- Login/Signup Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="loginTab">Login</div>
+        <div class="auth-tab" id="signupTab">Sign Up</div>
+      </div>
+      
+      <div class="auth-form active" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password">
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="loginSubmit">Login</button>
+          <button class="btn btn-secondary" id="switchToSignup">Sign Up Instead</button>
+        </div>
+        <div class="forgot-password">
+          <a href="#">Forgot password?</a>
+        </div>
+        
+        <div class="social-login">
+          <p>Or login with</p>
+          <div class="social-icons">
+            <div class="social-icon facebook">
+              <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="social-icon google">
+              <i class="fab fa-google"></i>
+            </div>
+            <div class="social-icon twitter">
+              <i class="fab fa-twitter"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="auth-form" id="signupForm">
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="Create a password">
+        </div>
+        <div class="form-group">
+          <label for="signupConfirmPassword">Confirm Password</label>
+          <input type="password" id="signupConfirmPassword" placeholder="Confirm your password">
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="signupSubmit">Sign Up</button>
+          <button class="btn btn-secondary" id="switchToLogin">Login Instead</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="images/js/login.js"></script>
+  
+</body>
+</html>
